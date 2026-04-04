@@ -1,25 +1,32 @@
 import './style.scss';
-import { initTree } from './three/scene.js';
-import { renderWorkd } from './components/works.js';
+// Three.js の初期化は別で使う場合だけ有効
+// import { initTree } from './three/scene.js';
+// import { renderWorkd } from './components/works.js';
 
-const fetchWorks = async () => {
+async function getWorks() {
   try {
     const res = await fetch('/api/posts');
-    if (!res.ok) throw new Error('API取得失敗');
     const data = await res.json();
-    return data;
-  } catch (err) {
-    console.error('fetchWorksエラー', err);
-    return { contents: [] };
+
+    console.log(data.contents);
+
+    const worksEl = document.getElementById('work');
+    worksEl.innerHTML = data.contents
+      .map(
+        (item) => `
+        <div>
+          <h3>${item.title}</h3>
+          <p>${item.description}</p>
+          <a href="${item.link}" target="_blank">見る</a>
+        </div>
+      `,
+      )
+      .join('');
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    const worksEl = document.getElementById('work');
+    worksEl.innerHTML = '<p>データの取得に失敗しました</p>';
   }
-};
+}
 
-const init = async () => {
-  initThree();
-
-  const data = await fetchWorks();
-
-  renderWorks(data);
-};
-
-init();
+getWorks();
