@@ -1,11 +1,18 @@
 import './style.scss';
+import config from './config.js';
+
 // Three.js の初期化は別で使う場合だけ有効
 // import { initTree } from './three/scene.js';
 // import { renderWorkd } from './components/works.js';
 
 async function getWorks() {
   try {
-    const res = await fetch('/api/posts');
+    // const res = await fetch('/api/posts');
+    const res = await fetch(config.apiUrl, {
+      headers: {
+        'X-MICROCMS-API-KEY': config.apiKey,
+      },
+    });
     const data = await res.json();
 
     console.log(data.contents);
