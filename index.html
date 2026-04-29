@@ -7,22 +7,13 @@
     <title>pf</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- <link
-      href="https://fonts.googleapis.com/css2?family=LINE+Seed+JP:wght@400;700;800&family=Noto+Sans+JP&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
-      rel="stylesheet"
-    /> -->
     <link
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=LINE+Seed+JP:wght@400;700;800&family=Noto+Sans+JP:wght@400;700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Zen+Kaku+Gothic+New&display=swap"
       rel="stylesheet"
     />
-
-    <!-- <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=LINE+Seed+JP:wght@400;700;800&family=Noto+Sans+JP&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
-      rel="stylesheet"
-    /> -->
     <link rel="stylesheet" href="src/style.scss" />
   </head>
-  <body>
+  <body data-page="top">
     <!-- ★ ローディングUI -->
     <div
       class="loading"
@@ -39,7 +30,6 @@
     >
       <div class="loading-text">LOADING...</div>
     </div>
-    <!-- <div class="loader-text">loading…</div> -->
 
     <script type="module" src="/src/main.js"></script>
 
@@ -56,11 +46,11 @@
 
       <nav class="global-nav" aria-label="メインナビゲーション">
         <ul class="submenu">
-          <li><a href="#">3D work</a></li>
-          <li><a href="#">LP work</a></li>
-          <li><a href="#">overview</a></li>
-          <li><a href="#">updates</a></li>
-          <li><a href="#">about</a></li>
+          <li><a href="#threework">3D work</a></li>
+          <li><a href="#lpwork">LP work</a></li>
+          <li><a href="#overview">overview</a></li>
+          <li><a href="#updates">updates</a></li>
+          <li><a href="#about">about</a></li>
         </ul>
       </nav>
       <div class="overlay"></div>
@@ -71,7 +61,7 @@
         <div id="three"></div>
       </section>
 
-      <section class="threework">
+      <section id="threework" class="threework">
         <div class="threework-container section-container">
           <div class="section-head">
             <h2 class="threework-title">3D WORK</h2>
@@ -80,10 +70,18 @@
 
           <div class="threework-wrapper coverflow-wrapper">
             <div class="threework-items coverflow" id="CoverFlow">
-              <div class="threework-item coverflow__item" data-title="title1">
+              <div
+                class="threework-item coverflow__item"
+                data-title="Rose"
+                data-tool="Blender"
+              >
                 <img src="/images/scroll01.png" alt="画像" />
               </div>
-              <div class="threework-item coverflow__item" data-title="title4">
+              <div
+                class="threework-item coverflow__item"
+                data-title="Color"
+                data-tool="Three.js"
+              >
                 <video
                   src="/videos/scroll02.mp4"
                   autoplay
@@ -94,10 +92,18 @@
                 ></video>
               </div>
 
-              <div class="threework-item coverflow__item" data-title="title3">
+              <div
+                class="threework-item coverflow__item"
+                data-title="Unicorn"
+                data-tool="Blender"
+              >
                 <img src="images/scroll03.png" alt="画像" />
               </div>
-              <div class="threework-item coverflow__item" data-title="title4">
+              <div
+                class="threework-item coverflow__item"
+                data-title="Petals"
+                data-tool="Three.js"
+              >
                 <video
                   src="/videos/scroll05.mp4"
                   autoplay
@@ -108,7 +114,11 @@
                 ></video>
               </div>
 
-              <div class="threework-item coverflow__item" data-title="title5">
+              <div
+                class="threework-item coverflow__item"
+                data-title="Bath"
+                data-tool="Blender"
+              >
                 <img src="/images/scroll04.png" alt="画像" />
               </div>
             </div>
@@ -142,7 +152,7 @@
           </div>
         </div>
       </section>
-      <section class="lpwork">
+      <section id="lpwork" class="lpwork">
         <div class="lpwork-container section-container is-2col">
           <div class="lpwork-left">
             <h2 class="lpwork-title">LP WORK</h2>
@@ -182,7 +192,7 @@
                   href="https://coffee-lp-demo-henna.vercel.app/"
                   target="_blank"
                 >
-                  <img src="./public/lp-thumb.png" alt="LP thumbnail" />
+                  <img src="./public/images/lp-thumb.png" alt="LP thumbnail" />
                 </a>
               </div>
               <a
@@ -209,7 +219,7 @@
           </div>
         </div>
       </section>
-      <section class="overview">
+      <section id="overview" class="overview">
         <div class="overview-container section-container is-2col">
           <div class="overview-left">
             <h2 class="overview-title">OVERVIEW</h2>
@@ -219,7 +229,10 @@
           </div>
           <div class="overview-right">
             <figure class="overview-thumbnail">
-              <img src="./public/overview-thumb.png" alt="Overview thumbnail" />
+              <img
+                src="./public/images/overview-thumb.png"
+                alt="Overview thumbnail"
+              />
             </figure>
 
             <div class="overview-intent">
@@ -274,7 +287,7 @@
           </div>
         </div>
       </section>
-      <section class="updates front-info content-width">
+      <section id="updates" class="updates front-info content-width">
         <div class="updates-container section-container">
           <div class="section-head">
             <h2>UPDATES</h2>
@@ -285,9 +298,12 @@
             <!-- microCMSから取得した記事を表示 -->
             <ul class="updates-info-list" id="update"></ul>
           </div>
+          <div class="btn-wrapper">
+            <a class="btn" href="./updates.html" target="_blank">More →</a>
+          </div>
         </div>
       </section>
-      <section class="about">
+      <section id="about" class="about">
         <div class="about-container section-container is-2col">
           <div class="about-left">
             <h2 class="about-title">ABOUT</h2>
@@ -319,19 +335,19 @@
         <div class="footer-inner-col1">
           <ul class="i-footer-nav-list">
             <li class="i-footer-nav-item">
+              <a href="#threework" class="i-footer-nav-link">3D works</a>
+            </li>
+            <li class="i-footer-nav-item">
+              <a href="#lpwork" class="i-footer-nav-link">LP work</a>
+            </li>
+            <li class="i-footer-nav-item">
               <a href="#overview" class="i-footer-nav-link">overview</a>
             </li>
             <li class="i-footer-nav-item">
-              <a href="#" class="i-footer-nav-link">about</a>
+              <a href="#updates" class="i-footer-nav-link">updates</a>
             </li>
             <li class="i-footer-nav-item">
-              <a href="#" class="i-footer-nav-link">LP work</a>
-            </li>
-            <li class="i-footer-nav-item">
-              <a href="#" class="i-footer-nav-link">3D works</a>
-            </li>
-            <li class="i-footer-nav-item">
-              <a href="#" class="i-footer-nav-link">updates</a>
+              <a href="#about" class="i-footer-nav-link">about</a>
             </li>
           </ul>
         </div>

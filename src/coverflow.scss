@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   margin: 0 auto;
-  height: 400px;
+  height: 300px;
   perspective: 800px;
   overflow: hidden;
 }
@@ -95,5 +95,8 @@
   }
   .album-title {
     font-size: 22px;
+  }
+  .coverflow {
+    height: 400px;
   }
 }

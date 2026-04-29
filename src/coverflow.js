@@ -2,9 +2,6 @@ export function createCoverflow(container, options = {}) {
   const wrapper = container.closest('.coverflow-wrapper');
   const items = container.querySelectorAll('.coverflow__item');
 
-  // const prevBtn = document.querySelector('.coverflow__btn--prev');
-  // const nextBtn = document.querySelector('.coverflow__btn--next');
-  // const titleEl = document.querySelector('#albumTitle');
   const prevBtn = wrapper.querySelector('.coverflow__btn--prev');
   const nextBtn = wrapper.querySelector('.coverflow__btn--next');
   const titleEl = wrapper.querySelector('#albumTitle');
@@ -48,7 +45,14 @@ export function createCoverflow(container, options = {}) {
     });
 
     if (titleEl) {
-      titleEl.textContent = items[current].dataset.title;
+      const currentItem = items[current];
+
+      const { title, tool } = currentItem.dataset;
+
+      titleEl.innerHTML = `
+      <div class="title"> ${title}</div>
+      <small class="tools">Tools： ${tool}</small>
+      `;
     }
   }
 
