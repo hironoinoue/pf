@@ -1,5 +1,10 @@
+import { defineConfig } from 'vite';
 import glsl from 'vite-plugin-glsl';
 
-export default {
+export default defineConfig({
   plugins: [glsl()],
-};
+
+  build: {
+    outDir: 'dist',
+  },
+});
