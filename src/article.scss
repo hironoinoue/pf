@@ -34,7 +34,8 @@ main {
 }
 
 .article-link {
-  display: inline-block;
+  display: block;
+  text-align: right;
   margin-top: 20px;
 }
 .back-button {
@@ -57,8 +58,11 @@ main {
     opacity: 1;
   }
 }
+
 .article-meta {
   margin-top: 20px;
+  display: block;
+  text-align: right;
 
   font-family: 'Roboto Mono', sans-serif;
   color: #626466;

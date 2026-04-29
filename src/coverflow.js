@@ -12,10 +12,7 @@ export function createCoverflow(container, options = {}) {
   let isDragging = false;
   let diff = 0;
 
-  const spacing = options.spacing ?? 240;
   const angle = options.angle ?? 40;
-  const scale = options.scale ?? 1.2;
-  const centerScale = options.centerScale ?? 1.5;
 
   // -----------------------------
   // 描画
@@ -23,10 +20,14 @@ export function createCoverflow(container, options = {}) {
   function render() {
     const isSP = window.innerWidth < 768;
 
+    const spacing = options.getSpacing ? options.getSpacing() : 240;
+    const scale = options.getScale ? options.getScale() : 1.2;
+    const centerScale = options.getCenterScale ? options.getCenterScale() : 1.5;
+
     items.forEach((item, i) => {
       const offset = i - current;
 
-      const distanceFactor = offset === 0 ? 1 : 1 + Math.abs(offset) * 0.15; //0.1
+      const distanceFactor = offset === 0 ? 1 : 1 + Math.abs(offset) * 0.15;
 
       const x = offset * spacing * distanceFactor + diff;
 
@@ -47,11 +48,13 @@ export function createCoverflow(container, options = {}) {
     if (titleEl) {
       const currentItem = items[current];
 
-      const { title, tool } = currentItem.dataset;
+      const { title, tool, link } = currentItem.dataset;
 
       titleEl.innerHTML = `
       <div class="title"> ${title}</div>
-      <small class="tools">Tools： ${tool}</small>
+      <div class="tools"> Made with ${tool}</div>
+      <a href="${link}" target="_blank" rel="noopener noreferrer">View →</a>
+
       `;
     }
   }
@@ -61,6 +64,8 @@ export function createCoverflow(container, options = {}) {
   // -----------------------------
   items.forEach((item, i) => {
     item.addEventListener('click', () => {
+      if (i === current) return;
+
       current = i;
       diff = 0;
       render();
@@ -127,6 +132,18 @@ export function createCoverflow(container, options = {}) {
     });
 
     render();
+  });
+
+  //リサイズした0.15秒後に１回だけrender
+  let resizeTimer;
+
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+
+    resizeTimer = setTimeout(() => {
+      diff = 0;
+      render();
+    }, 150);
   });
 
   // 初期描画

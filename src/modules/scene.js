@@ -147,15 +147,15 @@ export function initScene() {
   //   Animation
   // ===================
 
-  // function animate() {
-  //   animationId = requestAnimationFrame(animate);
+  function animate() {
+    animationId = requestAnimationFrame(animate);
 
-  //   material.uniforms.uPressPoints.value = getFilledPressPoints();
-  //   material.uniforms.uTime.value += 0.03;
+    material.uniforms.uPressPoints.value = getFilledPressPoints();
+    material.uniforms.uTime.value += 0.03;
 
-  //   renderer.render(scene, camera);
-  // }
-  // animate();
+    renderer.render(scene, camera);
+  }
+  animate();
 }
 
 export function destroyScene() {
