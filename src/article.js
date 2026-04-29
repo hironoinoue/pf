@@ -4,16 +4,20 @@ import './reset.scss';
 
 const articleEl = document.getElementById('article');
 
-// URLからID取得
-const params = new URLSearchParams(location.search);
-const id = params.get('id');
+if (!articleEl) {
+  console.error('article element not found');
+} else {
+  const params = new URLSearchParams(location.search);
+  const id = params.get('id');
 
-if (!id) {
-  articleEl.innerHTML = '<p>記事が見つかりません</p>';
-  throw new Error('No ID');
+  if (!id) {
+    articleEl.innerHTML = '<p>記事が見つかりません</p>';
+  } else {
+    getArticle(id);
+  }
 }
 
-async function getArticle() {
+async function getArticle(id) {
   try {
     const res = await fetch(`${config.apiUrl}/${id}`, {
       headers: {
@@ -24,7 +28,6 @@ async function getArticle() {
     if (!res.ok) throw new Error('API Error');
 
     const data = await res.json();
-
     renderArticle(data);
   } catch (error) {
     console.error(error);
@@ -64,5 +67,3 @@ function formatDate(dateStr) {
   if (!dateStr) return '';
   return new Date(dateStr).toLocaleDateString('ja-JP');
 }
-
-getArticle();

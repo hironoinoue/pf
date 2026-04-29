@@ -7,9 +7,13 @@ body {
   margin: 0;
   font-family: 'Hiragino Kaku Gothic ProN';
 }
-main {
+.privacy {
   max-width: 800px;
   margin: 60px auto;
   padding: 0 20px;
   line-height: 1.8;
+  .privacy-date {
+    display: block;
+    text-align: right;
+  }
 }

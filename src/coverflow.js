@@ -1,5 +1,8 @@
 export function createCoverflow(container, options = {}) {
   const wrapper = container.closest('.coverflow-wrapper');
+
+  if (!wrapper) return;
+
   const items = container.querySelectorAll('.coverflow__item');
 
   const prevBtn = wrapper.querySelector('.coverflow__btn--prev');
