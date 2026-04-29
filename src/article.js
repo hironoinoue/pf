@@ -43,6 +43,12 @@ function renderArticle(data) {
         : ''
     }
 
+    ${
+      data.link
+        ? `<a class="article-link" href="${data.link}" target="_blank" rel="noopener">LiveDemo →</a>`
+        : ''
+    }
+
     <div class="article-body">
       ${data.article || ''}
     </div>
@@ -50,11 +56,7 @@ function renderArticle(data) {
       <time>${formatDate(data.publishedAt)}</time>
     </div>
 
-    ${
-      data.link
-        ? `<a class="article-link" href="${data.link}" target="_blank" rel="noopener">Link</a>`
-        : ''
-    }
+    
   `;
 }
 

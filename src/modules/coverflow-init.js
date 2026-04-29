@@ -8,9 +8,9 @@ export function initCoverflow() {
 
   createCoverflow(el, {
     startIndex: 2,
-    spacing: isSP ? 90 : 140,
+    getSpacing: () => (window.innerWidth < 768 ? 90 : 140),
     angle: 40,
-    scale: isSP ? 0.75 : 1.2,
-    centerScale: isSP ? 1.1 : 1.5,
+    getScale: () => (window.innerWidth < 768 ? 0.75 : 1.2),
+    getCenterScale: () => (window.innerWidth < 768 ? 1.1 : 1.5),
   });
 }

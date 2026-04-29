@@ -38,7 +38,7 @@ export function initUpdates(config, mode) {
         <a href="/article.html?id=${item.id}">  
         <img src="${item.image?.url ?? ''}" alt="${item.title}">
             <h4 class="updates-title">${item.title}</h4>
-            <p class="updates-desc">${item.description || ''}</p>
+            <p class="updates-desc">${item.description || ''}<span class="more">...</span></p>
            </a>
         </li>
       `;
