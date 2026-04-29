@@ -1,4 +1,5 @@
 import './reset.scss';
+import './privacy.scss';
 import './style.scss';
 import './coverflow.scss';
 import './scroll.js';

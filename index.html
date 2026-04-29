@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/images/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pf</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -11,7 +11,6 @@
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=LINE+Seed+JP:wght@400;700;800&family=Noto+Sans+JP:wght@400;700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Zen+Kaku+Gothic+New&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="src/style.scss" />
   </head>
   <body data-page="top">
     <!-- ★ ローディングUI -->
@@ -74,7 +73,7 @@
                 class="threework-item coverflow__item"
                 data-title="Rose"
                 data-tool="Blender"
-                data-link="http://localhost:5173/article.html?id=t3482ruae"
+                data-link="./article.html"
               >
                 <img src="/images/scroll01.png" alt="バラの3Dモデル" />
               </div>
@@ -98,9 +97,9 @@
                 class="threework-item coverflow__item"
                 data-title="Unicorn"
                 data-tool="Blender"
-                data-link="http://localhost:5173/article.html?id=kqaw9ul4-rb"
+                data-link="./article.html"
               >
-                <img src="images/scroll03.png" alt="ユニコーンの3Dモデル" />
+                <img src="/images/scroll03.png" alt="ユニコーンの3Dモデル" />
               </div>
               <div
                 class="threework-item coverflow__item"
@@ -121,7 +120,7 @@
                 class="threework-item coverflow__item"
                 data-title="Yuru-chara"
                 data-tool="Blender"
-                data-link="http://localhost:5173/article.html?id=vmgjjgyuo"
+                data-link="./article.html"
               >
                 <img src="/images/scroll04.png" alt="ゆるキャラの3Dモデル" />
               </div>
@@ -163,13 +162,12 @@
             <p class="section__desc">Landing page projects</p>
           </div>
           <div class="section__main">
-            <!-- <div class="lpwork-item"> -->
             <a
               class="lpwork-item__link"
               href="https://coffee-lp-demo-henna.vercel.app/"
               target="_blank"
             >
-              <img src="./public/images/lp-thumb.png" alt="LP thumbnail" />
+              <img src="/images/lp-thumb.png" alt="LP thumbnail" />
             </a>
             <a
               class="detail-btn"
@@ -215,7 +213,6 @@
                 <p>HTML / SCSS / JavaScript / Vite / Vercel</p>
               </li>
             </ul>
-            <!-- </div> -->
           </div>
         </div>
       </section>
@@ -229,44 +226,27 @@
           </div>
           <div class="section__main">
             <figure class="overview-thumbnail">
-              <img
-                src="./public/images/overview-thumb.png"
-                alt="Overview thumbnail"
-              />
+              <img src="/images/overview-thumb.png" alt="Overview thumbnail" />
             </figure>
 
-            <!-- <div class="overview-intent"> -->
             <h3>Design Intent</h3>
             <p>
               本ポートフォリオでは、印象に残る体験設計のためにThree.jsによる3D表現を導入しています。
             </p>
-            <!-- </div> -->
             <div class="overview-axis">
               <h3>Three Elements</h3>
               <ul class="overview-list">
                 <li>
-                  <!-- <p> -->
                   <span class="label">Web表現</span>
-                  <!-- <span class="desc">立体的なUI・ビジュアル設計</span> -->
                   立体的なUI・ビジュアル設計
-
-                  <!-- </p> -->
                 </li>
                 <li>
-                  <!-- <p> -->
                   <span class="label">インタラクション</span>
-                  <!-- <span class="desc">動きによる体験価値の向上</span> -->
                   動きによる体験価値の向上
-
-                  <!-- </p> -->
                 </li>
                 <li>
-                  <!-- <p> -->
                   <span class="label">情報運用</span>
-                  <!-- <span class="desc">記事更新によるコンテンツの継続性</span> -->
                   記事更新によるコンテンツの継続性
-
-                  <!-- </p> -->
                 </li>
               </ul>
             </div>
@@ -340,7 +320,11 @@
 
         <div class="footer-inner-col2">
           <div class="i-footer-sns">
-            <a href="https://github.com/ID" target="_blank" rel="noopener">
+            <a
+              href="https://github.com/hironoinoue/portfolio"
+              target="_blank"
+              rel="noopener"
+            >
               <svg
                 class="github-icon"
                 xmlns="http://www.w3.org/2000/svg"
@@ -353,7 +337,7 @@
               </svg>
             </a>
           </div>
-          <a href="/privacy.html" class="i-footer-privacy" target="_blank"
+          <a href="./privacy.html" class="i-footer-privacy" target="_blank"
             >Privacy Policy</a
           >
           <small>&copy; 2026 hi_6n0 i</small>

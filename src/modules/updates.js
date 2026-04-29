@@ -35,7 +35,7 @@ export function initUpdates(config, mode) {
       .map((item) => {
         return `
         <li class="updates-info-item">
-        <a href="/article.html?id=${item.id}">  
+        <a href="./article.html?id=${item.id}">  
         <img src="${item.image?.url ?? ''}" alt="${item.title}">
             <h4 class="updates-title">${item.title}</h4>
             <p class="updates-desc">${item.description || ''}<span class="more">...</span></p>
