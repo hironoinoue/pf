@@ -48,12 +48,12 @@ function renderArticle(data) {
 
     ${
       data.link
-        ? `<a class="article-link" href="${data.link}" target="_blank" rel="noopener">LiveDemo →</a>`
+        ? `<a class="article-link" href="${data.link}" target="_blank" rel="noopener noreferrer">LiveDemo →</a>`
         : ''
     }
 
     <div class="article-body">
-      ${data.article || ''}
+      ${DOMPurify.sanitize(data.article || '')}
     </div>
     <div class="article-meta">
       <time>${formatDate(data.publishedAt)}</time>
