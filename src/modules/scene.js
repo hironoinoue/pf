@@ -46,7 +46,7 @@ export function initScene() {
 
   camera.position.set(0, 0, cameraZ);
 
-  const pressPoints = [];
+  const pressArray = [];
 
   //--- envMap
   const loader = new THREE.TextureLoader();
@@ -57,6 +57,8 @@ export function initScene() {
   const geometry = new THREE.SphereGeometry(1, 64, 64);
 
   //--- Shader
+  const pressPoints = new Float32Array(30);
+
   const material = new THREE.ShaderMaterial({
     vertexShader,
     fragmentShader,
@@ -68,6 +70,16 @@ export function initScene() {
     transparent: true,
   });
 
+  function updatePress() {
+    for (let i = 0; i < 10; i++) {
+      const ZERO = new THREE.Vector3(0, 0, 0);
+      const p = pressArray[i] ?? ZERO;
+      pressPoints[i * 3 + 0] = p.x;
+      pressPoints[i * 3 + 1] = p.y;
+      pressPoints[i * 3 + 2] = p.z;
+    }
+  }
+
   //--- Mesh
   const mesh = new THREE.Mesh(geometry, material);
   scene.add(mesh);
@@ -75,19 +87,19 @@ export function initScene() {
   //---Shader (Shaderに渡すデータを固定長に)
   const MAX_POINTS = 10;
 
-  function getFilledPressPoints() {
-    const points = [];
+  // function getFilledPressPoints() {
+  //   const points = [];
 
-    for (let i = 0; i < MAX_POINTS; i++) {
-      if (pressPoints[i]) {
-        points.push(pressPoints[i]);
-      } else {
-        points.push(new THREE.Vector3(0, 0, 0));
-      }
-    }
+  //   for (let i = 0; i < MAX_POINTS; i++) {
+  //     if (pressPoints[i]) {
+  //       points.push(pressPoints[i]);
+  //     } else {
+  //       points.push(new THREE.Vector3(0, 0, 0));
+  //     }
+  //   }
 
-    return points;
-  }
+  //   return points;
+  // }
   // マウス
   const raycaster = new THREE.Raycaster();
   const mouse = new THREE.Vector2();
@@ -106,10 +118,10 @@ export function initScene() {
       .add(raycaster.ray.direction.clone().multiplyScalar(2));
 
     // 座標を10個まで保持する
-    pressPoints.push(pressPos.clone());
+    pressArray.push(pressPos.clone());
 
-    if (pressPoints.length > 10) {
-      pressPoints.shift();
+    if (pressArray.length > 10) {
+      pressArray.shift();
     }
   };
 
@@ -150,7 +162,8 @@ export function initScene() {
   function animate() {
     animationId = requestAnimationFrame(animate);
 
-    material.uniforms.uPressPoints.value = getFilledPressPoints();
+    updatePress();
+
     material.uniforms.uTime.value += 0.03;
 
     renderer.render(scene, camera);
