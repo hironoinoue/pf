@@ -1,6 +1,7 @@
 import config from './config.js';
 import './article.scss';
 import './reset.scss';
+import DOMPurify from 'dompurify';
 
 const articleEl = document.getElementById('article');
 
